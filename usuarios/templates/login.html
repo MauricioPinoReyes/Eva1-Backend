@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Iniciar Sesión</h2>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <label>Nombre de usuario:</label>
+    <input type="text" name="nombre" required>
+    
+    <label>Contraseña:</label>
+    <div class="input-pass">
+        <input type="password" id="passLogin" name="pass" required>
+        <button type="button" id="btnMostrar">️</button>
+    </div>
+
+    <button type="submit">Ingresar</button>
+</form>
+<p>¿No tienes cuenta? <a href="/registro/">Regístrate</a></p>
+{% endblock %}
