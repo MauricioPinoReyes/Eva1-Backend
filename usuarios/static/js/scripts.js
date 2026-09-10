@@ -14,16 +14,21 @@ if(pass2) {
     });
 }
 
-// Mostrar/Ocultar contraseña en el login
-let btnMostrar = document.getElementById('btnMostrar');
-let passLogin = document.getElementById('passLogin');
+// Mostrar/Ocultar contraseña en el login (No funciona desde script.js cargado en login.html)
 
-if(btnMostrar) {
-    btnMostrar.addEventListener('click', function() {
-        if (passLogin.type === "password") {
-            passLogin.type = "text";
-        } else {
-            passLogin.type = "password";
-        }
-    });
-}
+/* let btnMostrar = document.getElementById('btnMostrar');
+    let passLogin = document.getElementById('passLogin');
+
+    if(btnMostrar && passLogin) {
+        btnMostrar.addEventListener('click', function() {
+            if (passLogin.type === "password") {
+                passLogin.type = "text";
+                this.textContent = "🙈";
+            } else {
+                passLogin.type = "password";
+                this.textContent = "👁️";
+            }
+        });
+    } */
+
+

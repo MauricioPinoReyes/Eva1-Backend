@@ -1,20 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Iniciar Sesión</h2>
-{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<h2 style="text-align: center;">Iniciar Sesión</h2>
+
+<!-- MENSAJE DE ÉXITO (Viene del registro) -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="alerta-exito">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<!-- MENSAJE DE ERROR -->
+{% if error %}
+    <div class="alerta-error">{{ error }}</div>
+{% endif %}
 
 <form method="POST">
     {% csrf_token %}
+    
     <label>Nombre de usuario:</label>
     <input type="text" name="nombre" required>
     
     <label>Contraseña:</label>
     <div class="input-pass">
         <input type="password" id="passLogin" name="pass" required>
-        <button type="button" id="btnMostrar">️</button>
+        <button type="button" id="btnMostrar">👁️</button>
     </div>
 
-    <button type="submit">Ingresar</button>
+    <button type="submit" class="btn-submit">Ingresar</button>
 </form>
-<p>¿No tienes cuenta? <a href="/registro/">Regístrate</a></p>
+
+<p style="text-align: center; margin-top: 15px;">¿No tienes cuenta? <a href="/registro/">Regístrate</a></p>
+
+
+<!-- Mostrar/Ocultar contraseña en el login (no carga desde script.js) -->
+<script>
+    let btnMostrar = document.getElementById('btnMostrar');
+    let passLogin = document.getElementById('passLogin');
+
+    if(btnMostrar && passLogin) {
+        btnMostrar.addEventListener('click', function() {
+            if (passLogin.type === "password") {
+                passLogin.type = "text";
+                this.textContent = "🙈";
+            } else {
+                passLogin.type = "password";
+                this.textContent = "👁️";
+            }
+        });
+    }
+</script>
 {% endblock %}

@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 .contenedor {
@@ -12,28 +12,54 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 350px;
+    width: 100%;
+    max-width: 400px;
 }
 input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
-button {
+
+/* Estilo solo para botones de enviar/registro */
+button.btn-submit {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
 }
-button:hover { background-color: #218838; }
-.error { color: red; font-size: 0.9em; }
-.requisitos { color: gray; font-size: 0.8em; }
-.input-pass { display: flex; }
-.input-pass input { flex: 1; }
-.input-pass button { width: auto; margin-left: 5px; background: #007bff; }
+button.btn-submit:hover { background-color: #218838; }
+
+/* Estilo específico para el botón del ojo */
+.input-pass { display: flex; margin: 8px 0; }
+.input-pass input { flex: 1; margin: 0; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.input-pass button { 
+    width: 45px !important; 
+    margin: 0 !important; 
+    background: #007bff !important; 
+    border-radius: 0 5px 5px 0 !important;
+    font-size: 18px;
+}
+.input-pass button:hover { background: #0056b3 !important; }
+
+.error { color: red; font-size: 0.9em; margin-top: -5px; display: block; }
+.requisitos { color: gray; font-size: 0.8em; display: block; margin-top: -5px; margin-bottom: 10px; }
+
+/* Estilos para los mensajes de Django */
+.alerta-exito {
+    background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; 
+    margin-bottom: 15px; border: 1px solid #c3e6cb; text-align: center;
+}
+.alerta-error {
+    background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; 
+    margin-bottom: 15px; border: 1px solid #f5c6cb; text-align: center;
+}

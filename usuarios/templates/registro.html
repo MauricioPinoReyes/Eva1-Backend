@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Registro de Usuario</h2>
+<h2 style="text-align: center;">Registro de Usuario</h2>
 {% if error %}<p class="error">{{ error }}</p>{% endif %}
 
 <form method="POST" id="formRegistro">
@@ -19,7 +19,26 @@
     <input type="password" id="pass2" name="pass2" required>
     <span id="coincidencia" class="error"></span>
 
-    <button type="submit">Registrarse</button>
+    <button type="submit" class="btn-submit">Registrarse</button>
 </form>
-<p>¿Ya tienes cuenta? <a href="/login/">Inicia sesión</a></p>
+<p style="text-align: center; margin-top: 15px;">¿Ya tienes cuenta? <a href="/login/">Inicia sesión</a></p>
+
+
+<!-- <script>
+    let pass1 = document.getElementById('pass1');
+    let pass2 = document.getElementById('pass2');
+    let msgCoincidencia = document.getElementById('coincidencia');
+
+    if(pass2) {
+        pass2.addEventListener('input', function() {
+            if (pass1.value !== pass2.value) {
+                msgCoincidencia.textContent = "Las contraseñas no coinciden";
+                msgCoincidencia.style.color = "red";
+            } else {
+                msgCoincidencia.textContent = "Las contraseñas coinciden ✓";
+                msgCoincidencia.style.color = "green";
+            }
+        });
+    }
+</script> -->
 {% endblock %}

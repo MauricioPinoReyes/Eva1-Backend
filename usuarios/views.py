@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages  # <--- 1. AGREGA ESTA LÍNEA
 from .models import Usuario
 import re
 
@@ -24,6 +25,7 @@ def registro(request):
         else:
             # Guardar en BD
             Usuario.objects.create(nombre_usuario=nombre, correo=correo, contrasena=pass1)
+            messages.success(request, "Se ha registrado correctamente.") # <--- 2. AGREGA ESTA LÍNEA
             return redirect('login') # Redirigir al login
 
     return render(request, 'registro.html', {'error': mensaje_error})
@@ -38,16 +40,13 @@ def login_view(request):
         try:
             usuario = Usuario.objects.get(nombre_usuario=nombre)
             
-            # Validar si está bloqueado
             if usuario.bloqueado:
                 mensaje_error = "Clave bloqueada. Ha superado el máximo de intentos permitidos."
             elif usuario.contrasena == pass_ingresada:
-                # Login exitoso, resetear intentos
                 usuario.intentos_fallidos = 0
                 usuario.save()
                 return render(request, 'bienvenida.html', {'usuario': usuario.nombre_usuario})
             else:
-                # Contraseña incorrecta
                 usuario.intentos_fallidos += 1
                 if usuario.intentos_fallidos >= 3:
                     usuario.bloqueado = True
