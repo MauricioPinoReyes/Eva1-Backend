@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib import messages  # <--- 1. AGREGA ESTA LÍNEA
+from django.contrib import messages  
 from .models import Usuario
 import re
 
@@ -8,7 +8,7 @@ import re
 def registro(request):
     mensaje_error = ""
     if request.method == "POST":
-        nombre = request.POST.get('nombre')
+        nombre = request.POST.get('nombre') 
         correo = request.POST.get('correo')
         pass1 = request.POST.get('pass1')
         pass2 = request.POST.get('pass2')
@@ -25,7 +25,7 @@ def registro(request):
         else:
             # Guardar en BD
             Usuario.objects.create(nombre_usuario=nombre, correo=correo, contrasena=pass1)
-            messages.success(request, "Se ha registrado correctamente.") # <--- 2. AGREGA ESTA LÍNEA
+            messages.success(request, "Se ha registrado correctamente.") 
             return redirect('login') # Redirigir al login
 
     return render(request, 'registro.html', {'error': mensaje_error})
