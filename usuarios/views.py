@@ -42,7 +42,7 @@ def login_view(request):
             user.intentos_fallidos = 0
             user.save()
             login(request, user)
-            return redirect('bienvenida')
+            return redirect('productos:index')          # ← ÚNICO CAMBIO
         else:
             if usuario_obj:
                 usuario_obj.intentos_fallidos += 1
