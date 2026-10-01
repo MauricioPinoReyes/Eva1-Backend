@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>¡Bienvenido, {{ usuario }}!</h2>
-<p>Has ingresado correctamente al sistema.</p>
-<a href="/login/">Cerrar sesión</a>
+<h2 class="titulo-centrado">¡Bienvenido, {{ usuario }}!</h2>
+<p class="texto-centrado">Has ingresado correctamente al sistema.</p>
+
+<div style="text-align: center;">
+    <a href="{% url 'logout' %}" class="btn-logout">Cerrar sesión</a>
+</div>
 {% endblock %}

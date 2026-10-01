@@ -1,44 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 style="text-align: center;">Registro de Usuario</h2>
-{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<h2 class="titulo-centrado">Registro de Usuario</h2>
 
-<form method="POST" id="formRegistro">
+{% if messages %}
+    {% for message in messages %}
+        <div class="alerta-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<form method="POST" id="formRegistro" novalidate>
     {% csrf_token %}
-    <label>Nombre de usuario:</label>
-    <input type="text" name="nombre" required>
-    
-    <label>Correo electrónico:</label>
-    <input type="email" name="correo" required>
-    
-    <label>Contraseña:</label>
-    <input type="password" id="pass1" name="pass1" required>
+
+    <label for="{{ form.username.id_for_label }}">Nombre de usuario:</label>
+    {{ form.username }}
+    {% if form.username.errors %}
+        <span class="error">{{ form.username.errors.0 }}</span>
+    {% endif %}
+
+    <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
+    {{ form.email }}
+    {% if form.email.errors %}
+        <span class="error">{{ form.email.errors.0 }}</span>
+    {% endif %}
+
+    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+    {{ form.password1 }}
     <span id="requisitos" class="requisitos">Mínimo 8 caracteres, 1 mayúscula y 1 número.</span>
-    
-    <label>Confirmar contraseña:</label>
-    <input type="password" id="pass2" name="pass2" required>
+    {% if form.password1.errors %}
+        <span class="error">{{ form.password1.errors.0 }}</span>
+    {% endif %}
+
+    <label for="{{ form.password2.id_for_label }}">Confirmar contraseña:</label>
+    {{ form.password2 }}
     <span id="coincidencia" class="error"></span>
+    {% if form.password2.errors %}
+        <span class="error">{{ form.password2.errors.0 }}</span>
+    {% endif %}
 
     <button type="submit" class="btn-submit">Registrarse</button>
 </form>
-<p style="text-align: center; margin-top: 15px;">¿Ya tienes cuenta? <a href="/login/">Inicia sesión</a></p>
 
-
-<!-- <script>
-    let pass1 = document.getElementById('pass1');
-    let pass2 = document.getElementById('pass2');
-    let msgCoincidencia = document.getElementById('coincidencia');
-
-    if(pass2) {
-        pass2.addEventListener('input', function() {
-            if (pass1.value !== pass2.value) {
-                msgCoincidencia.textContent = "Las contraseñas no coinciden";
-                msgCoincidencia.style.color = "red";
-            } else {
-                msgCoincidencia.textContent = "Las contraseñas coinciden ✓";
-                msgCoincidencia.style.color = "green";
-            }
-        });
-    }
-</script> -->
+<p class="texto-centrado">¿Ya tienes cuenta? <a href="/login/">Inicia sesión</a></p>
 {% endblock %}

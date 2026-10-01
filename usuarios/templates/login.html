@@ -1,25 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 style="text-align: center;">Iniciar Sesión</h2>
+<h2 class="titulo-centrado">Iniciar Sesión</h2>
 
-<!-- MENSAJE DE ÉXITO (Viene del registro) -->
 {% if messages %}
     {% for message in messages %}
-        <div class="alerta-exito">{{ message }}</div>
+        <div class="alerta-{{ message.tags }}">{{ message }}</div>
     {% endfor %}
-{% endif %}
-
-<!-- MENSAJE DE ERROR -->
-{% if error %}
-    <div class="alerta-error">{{ error }}</div>
 {% endif %}
 
 <form method="POST">
     {% csrf_token %}
-    
+
     <label>Nombre de usuario:</label>
     <input type="text" name="nombre" required>
-    
+
     <label>Contraseña:</label>
     <div class="input-pass">
         <input type="password" id="passLogin" name="pass" required>
@@ -29,24 +23,26 @@
     <button type="submit" class="btn-submit">Ingresar</button>
 </form>
 
-<p style="text-align: center; margin-top: 15px;">¿No tienes cuenta? <a href="/registro/">Regístrate</a></p>
-
-
-<!-- Mostrar/Ocultar contraseña en el login (no carga desde script.js) -->
-<script>
-    let btnMostrar = document.getElementById('btnMostrar');
-    let passLogin = document.getElementById('passLogin');
-
-    if(btnMostrar && passLogin) {
-        btnMostrar.addEventListener('click', function() {
-            if (passLogin.type === "password") {
-                passLogin.type = "text";
-                this.textContent = "🙈";
-            } else {
-                passLogin.type = "password";
-                this.textContent = "👁️";
-            }
-        });
-    }
-</script>
+<p class="texto-centrado">¿No tienes cuenta? <a href="/registro/">Regístrate</a></p>
 {% endblock %}
+
+
+// Mostrar/Ocultar contraseña en el login (No funciona desde script.js cargado en login.html)
+
+<script>
+const btnMostrar = document.getElementById('btnMostrar');
+const passLogin = document.getElementById('passLogin');
+
+if (btnMostrar && passLogin) {
+    btnMostrar.addEventListener('click', function () {
+        if (passLogin.type === "password") {
+            passLogin.type = "text";
+            this.textContent = "🙈";
+        } else {
+            passLogin.type = "password";
+            this.textContent = "👁️";
+        }
+    });
+} 
+
+<script/>

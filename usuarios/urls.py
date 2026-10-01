@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('', views.login_view, name='login'),              # raíz → login
     path('registro/', views.registro, name='registro'),
-    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('bienvenida/', views.bienvenida, name='bienvenida'),
-    path('', views.login_view), # La raíz lleva al login
 ]

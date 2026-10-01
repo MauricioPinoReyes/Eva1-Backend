@@ -1,3 +1,6 @@
+/* ============================================
+   BASE
+   ============================================ */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -7,6 +10,7 @@ body {
     min-height: 100vh;
     margin: 0;
 }
+
 .contenedor {
     background: white;
     padding: 30px;
@@ -15,6 +19,10 @@ body {
     width: 100%;
     max-width: 400px;
 }
+
+/* ============================================
+   INPUTS
+   ============================================ */
 input {
     width: 100%;
     padding: 10px;
@@ -24,7 +32,7 @@ input {
     box-sizing: border-box;
 }
 
-/* Estilo solo para botones de enviar/registro */
+/* Botón de enviar/registro */
 button.btn-submit {
     width: 100%;
     padding: 12px;
@@ -39,27 +47,106 @@ button.btn-submit {
 }
 button.btn-submit:hover { background-color: #218838; }
 
-/* Estilo específico para el botón del ojo */
+/* Input de contraseña + botón del ojo */
 .input-pass { display: flex; margin: 8px 0; }
-.input-pass input { flex: 1; margin: 0; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0; }
-.input-pass button { 
-    width: 45px !important; 
-    margin: 0 !important; 
-    background: #007bff !important; 
+.input-pass input {
+    flex: 1;
+    margin: 0;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-pass button {
+    width: 45px !important;
+    margin: 0 !important;
+    background: #007bff !important;
+    border: none;
     border-radius: 0 5px 5px 0 !important;
     font-size: 18px;
+    cursor: pointer;
 }
 .input-pass button:hover { background: #0056b3 !important; }
 
-.error { color: red; font-size: 0.9em; margin-top: -5px; display: block; }
-.requisitos { color: gray; font-size: 0.8em; display: block; margin-top: -5px; margin-bottom: 10px; }
+/* ============================================
+   MENSAJES DE VALIDACIÓN
+   ============================================ */
+.error {
+    color: red;
+    font-size: 0.9em;
+    display: block;
+    margin-top: -5px;
+}
+.requisitos {
+    color: gray;
+    font-size: 0.8em;
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
 
-/* Estilos para los mensajes de Django */
+/* ============================================
+   MENSAJES DE DJANGO (messages)
+   ============================================ */
 .alerta-exito {
-    background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; 
-    margin-bottom: 15px; border: 1px solid #c3e6cb; text-align: center;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    text-align: center;
 }
 .alerta-error {
-    background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; 
-    margin-bottom: 15px; border: 1px solid #f5c6cb; text-align: center;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
+    text-align: center;
 }
+.alerta-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    text-align: center;
+}
+.alerta-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ffeeba;
+    text-align: center;
+}
+.alerta-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #bee5eb;
+    text-align: center;
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.titulo-centrado { text-align: center; margin-bottom: 20px; }
+.texto-centrado { text-align: center; margin-top: 15px; font-size: 0.9em; }
+
+.btn-logout {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.btn-logout:hover { background-color: #a71d2a; }
